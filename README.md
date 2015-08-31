@@ -8,7 +8,7 @@ using the VoiceIT API.
 - Twilio Account
 -- [Twilio Developer Registration](https://www.twilio.com/try-twilio)
 - VoiceIt Account
--- [VoiceIt Developer Registration](https://siv.voiceprintportal.com/sivservice/getDeveloperID.jsp)
+-- [VoiceIt Developer Registration](https://siv.voiceprintportal.com/getDeveloperID.jsp)
 
 ## Install:
 
