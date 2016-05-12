@@ -229,9 +229,6 @@ app.post('/process_authentication', function(req, res) {
   var options      = {
     url: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
     headers: {
-      'VsitAccuracy'              : 5,
-      'VsitAccuracyPassIncrement' : 2,
-      'VsitAccuracyPasses'        : 4,
       'VsitConfidence'            : 89,
       'VsitDeveloperId'           : VOICEIT_DEV_ID,
       'VsitEmail'                 : caller.email,
