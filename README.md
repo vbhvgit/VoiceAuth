@@ -25,6 +25,6 @@ npm install
 
     $ heroku create
     $ git push heroku master
-    $ heroku config:set VOICEIT_PASSWORD=foo VOICEIT_DEV_ID=12345
+    $ heroku config:set VOICEIT_PASSWORD=foo VOICEIT_DEV_ID=1d6361f81f3047ca8b0c0332ac0fb17d
 
 Point a Twilio Phone number to VoiceURL to your `http://my.herokuapp.com/incoming_call`
