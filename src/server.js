@@ -230,13 +230,15 @@ app.post('/process_enrollment', function(req, res) {
 //Methods to be executed after successfull login
 app.post('/options', function(req, res) {
   var twiml = new twilio.TwimlResponse();
+
+
   twiml.say('Select one of the option to proceed');
   twiml.pause(2);
   twiml.gather({
     action    : '/subOptions',
     numDigits : 1,
     timeout   : 3
-    }, function () {
+   }, function () {
        this.say('Please press 1 for Quickbooks Online. Press 2 for Quickbooks Desktop');
     });
   twiml.redirect('/subOptions?digits=TIMEOUT');
