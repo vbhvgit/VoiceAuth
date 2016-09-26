@@ -61,7 +61,7 @@ app.post('/incoming_call', function(req, res) {
 
       // Greet the caller when their account profile is recognized by the VoiceIt API.
       twiml.say(
-        'You have reached Intuits QuickBooks . Your phone number has been recognized.'
+        'You have reached Intuits QuickBooks . Your phone number has been recognized in our system.'
       );
       // Let's provide the caller with an opportunity to enroll by typing `1` on
       // their phone's keypad.
@@ -106,7 +106,7 @@ app.post('/incoming_call', function(req, res) {
           });
 
           twiml.say(
-            'Welcome to Intuit QuickBooks. Our system identifies you as a new user, ' +
+            'Welcome to Intuitis QuickBooks. Our system identifies you as a new user, ' +
             'you will now be taken through the enrollment process.'
           );
           // Then we'll want to send them immediately to enrollment.
@@ -132,7 +132,7 @@ app.post('/enroll_or_authenticate', function(req, res) {
   // instructions, otherwise, we always assume their intent is to authenticate.
   if (digits == 1) {
     twiml.say(
-      'You have chosen to create a new account with your voice. You will be ' +
+      'You have chosen to create a new account with Intuits voice recognition system. You will be ' +
       'asked to say a phrase 3 times, then you will be able to log in with that phrase.'
     );
     twiml.redirect('/enroll');
@@ -164,7 +164,7 @@ app.post('/enroll', function(req, res) {
 app.post('/authenticate', function(req, res) {
   var twiml = new twilio.TwimlResponse();
 
-  twiml.say('Please say the following phrase to authenticate.');
+  twiml.say('Please say the following phrase to authenticate. Once complete press the pound key.');
   twiml.pause(1);
   twiml.say('Never forget tomorrow is a new day.');
   // We neeed to record a `.wav` file. This will be sent to VoiceIt for authentication.
@@ -204,21 +204,21 @@ app.post('/process_enrollment', function(req, res) {
         // VoiceIt requires at least 3 successful enrollments.
         if (enrollCount > 2) {
           twiml.say(
-            'Thank you, recording recieved. You are now enrolled. You can log in.'
+            'Thank you, recording is recieved. You are now enrolled and would be redirected to log in.'
           );
           twiml.redirect('/authenticate');
         } else {
           twiml.say(
-            'Thank you, recording recieved. You will now be asked to record your phrase again.'
+            'Thank you, recording is recieved. You will now be asked to record your phrase again.'
           );
           twiml.redirect('/enroll?enrollCount=' + enrollCount);
         }
       } else {
-        twiml.say('Sorry, your recording did not stick. Please try again.');
+        twiml.say('Sorry, your recording did not go through. Please try again.');
         twiml.redirect('/enroll?enrollCount=' + enrollCount);
       }
     } else {
-      twiml.say('Sorry, your recording did not stick. Please try again');
+      twiml.say('Sorry, your recording did not go through. Please try again');
       twiml.redirect('/enroll?enrollCount=' + enrollCount);
     }
 
@@ -257,7 +257,7 @@ app.post('/process_authentication', function(req, res) {
           twiml.say(voiceIt.Result);
       }
     } else {
-      twiml.say('API Error. Your authentication did not pass. Please try again.');
+      twiml.say('OOPS! Your authentication did not pass. Please try again.');
       twiml.redirect('/authenticate');
 
       new Error(response.statusCode, body);
