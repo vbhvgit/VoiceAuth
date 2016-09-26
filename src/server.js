@@ -106,8 +106,8 @@ app.post('/incoming_call', function(req, res) {
           });
 
           twiml.say(
-            'Welcome to the Voice Authentication system. You are a new user, ' +
-            'you will now be enrolled.'
+            'Welcome to Intuit QuickBooks. Our system identifies you as a new user, ' +
+            'you will now be taken through the enrollment process.'
           );
           // Then we'll want to send them immediately to enrollment.
           twiml.redirect({ digits: '1' }, '/enroll');
