@@ -272,6 +272,7 @@ app.post('/process_authentication', function(req, res) {
 	case 'SUC':
 	  twiml.say('Great you are in now');
 	  twiml.redirect('/options');
+	  break;
 	case 'VPND':
 	  twiml.say('Voiceprint Phrase not detected. Please make sure Voiceprint Phrase is at least 1.2 seconds long.');
         default:
