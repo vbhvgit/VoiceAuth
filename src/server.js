@@ -226,6 +226,22 @@ app.post('/process_enrollment', function(req, res) {
   });
 });
 
+
+//Methods to be executed after successfull login
+app.post('/options', function(req, res) {
+  var twiml = new twilio.TwimlResponse();
+  twiml.say('Select one of the option to proceed');
+  twiml.pause(2);
+  twiml.gather({
+    action    : '/subOptions',
+    numDigits : 1,
+    timeout   : 3
+    }, function () {
+       this.say('Please press 1 for Quickbooks Online. Press 2 for Quickbooks Desktop');
+    });
+  twiml.redirect('/subOptions?digits=TIMEOUT');
+});
+
 app.post('/process_authentication', function(req, res) {
   var caller       = callerCredentials(req.body);
   var recordingURL = req.body.RecordingUrl + '.wav';
@@ -248,11 +264,16 @@ app.post('/process_authentication', function(req, res) {
       var voiceIt = JSON.parse(body);
       console.log(voiceIt);
 
-      switch(voiceIt.Result) {
-        case 'Authentication failed.':
+      switch(voiceIt.ResponseCode) {
+        case 'ATF':
           twiml.say('Your authentication did not pass. Please try again.');
           twiml.redirect('/authenticate');
           break;
+	case 'SUC':
+	  twiml.say('Great you are in now');
+	  twiml.redirect('/options');
+	case 'VPND':
+	  twiml.say('Voiceprint Phrase not detected. Please make sure Voiceprint Phrase is at least 1.2 seconds long.');
         default:
           twiml.say(voiceIt.Result);
       }
