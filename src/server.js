@@ -61,7 +61,7 @@ app.post('/incoming_call', function(req, res) {
 
       // Greet the caller when their account profile is recognized by the VoiceIt API.
       twiml.say(
-        'You have called Voice Authentication. Your phone number has been recognized.'
+        'You have reached Intuits QuickBooks. Your phone number has been recognized.'
       );
       // Let's provide the caller with an opportunity to enroll by typing `1` on
       // their phone's keypad.
