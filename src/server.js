@@ -132,7 +132,7 @@ app.post('/enroll_or_authenticate', function(req, res) {
   // instructions, otherwise, we always assume their intent is to authenticate.
   //twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
   //var digits = numIn.replace(/[^0-9]/g, '');
-  console.log(numIn);
+  
   console.log(JSON.stringify(req.body.Digits));
   console.log(JSON.stringify(req.body.Digits).replace(/[^0-9]/g, ''));	
   console.log(digits);
