@@ -125,7 +125,7 @@ app.post('/incoming_call', function(req, res) {
 // ------------------------------------
 // We need a route to help determine what the caller intends to do.
 app.post('/enroll_or_authenticate', function(req, res) {
-  var numIn = JSON.stringify(req.body.digits);
+  var digits = req.body.Digits;
   var twiml  = new twilio.TwimlResponse();
   
   // When the caller asked to enroll by pressing `1`, provide friendly
@@ -133,8 +133,8 @@ app.post('/enroll_or_authenticate', function(req, res) {
   //twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
   //var digits = numIn.replace(/[^0-9]/g, '');
   console.log(numIn);
-  console.log(JSON.stringify(req.body.digits));
-  console.log(JSON.stringify(req.body.digits).replace(/[^0-9]/g, ''));	
+  console.log(JSON.stringify(req.body.Digits));
+  console.log(JSON.stringify(req.body.Digits).replace(/[^0-9]/g, ''));	
   console.log(digits);
   if (digits == 1) {
     twiml.say(
