@@ -125,14 +125,14 @@ app.post('/incoming_call', function(req, res) {
 // ------------------------------------
 // We need a route to help determine what the caller intends to do.
 app.post('/enroll_or_authenticate', function(req, res) {
-  var digits = parseInt(JSON.stringify(req.body.digits));
+  var numIn = JSON.stringify(req.body.digits);
   var twiml  = new twilio.TwimlResponse();
-
+  var digits = numIn.replace(/[^0-9]/g, '');
   // When the caller asked to enroll by pressing `1`, provide friendly
   // instructions, otherwise, we always assume their intent is to authenticate.
   //twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
   
-  console.log(parseInt(JSON.stringify(req.body.Digits)));
+  console.log(digits);
   if (digits == 1) {
     twiml.say(
       'You have chosen to create a new account with Intuits voice recognition system. You will be ' +
