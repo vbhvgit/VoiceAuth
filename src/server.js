@@ -133,9 +133,9 @@ app.post('/enroll_or_authenticate', function(req, res) {
   //twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
   //var digits = numIn.replace(/[^0-9]/g, '');
   
-  console.log(JSON.stringify(req.body.Digits));
-  console.log(JSON.stringify(req.body.Digits).replace(/[^0-9]/g, ''));	
-  console.log(digits);
+  //console.log(JSON.stringify(req.body.Digits));
+  //console.log(JSON.stringify(req.body.Digits).replace(/[^0-9]/g, ''));	
+  //console.log(digits);
   if (digits == 1) {
     twiml.say(
       'You have chosen to create a new account with Intuits voice recognition system. You will be ' +
@@ -256,6 +256,7 @@ app.post('/subOptions', function(req,res) {
 	
 	var toneUrl = 'http://kamazoy.uk/wp-content/uploads/2013/03/012.wav';
 	twiml.say('To purchase a new QuickBook press 1. For support press 2.');
+	twiml.pause(2);
 	twiml.say('A customer care executive will assist you shortly, please wait while we transfer your call. This call will be recorded and monitored for quality and training purposes.');
 	twiml.play(toneUrl);
 	res.send(twiml.toString());
