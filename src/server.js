@@ -248,7 +248,10 @@ app.post('/options', function(req, res) {
 app.post('/subOptions', function(req,res) {
 	var twiml = new twilio.TwimlResponse();
 	
-	twiml.say('Reached to Sub Optoins Menu. Thanks for calling');
+	var toneUrl = 'http://kamazoy.uk/wp-content/uploads/2013/03/012.wav';
+	twiml.say('To purchase a new QuickBook press 1. For support press 2.');
+	twiml.say('A customer care executive will assist you shortly, please wait while we transfer your call. This call will be recorded and monitored for quality and training purposes.');
+	twiml.play(toneUrl);
 	res.send(twiml.toString());
 });
 
