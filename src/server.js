@@ -130,7 +130,9 @@ app.post('/enroll_or_authenticate', function(req, res) {
 
   // When the caller asked to enroll by pressing `1`, provide friendly
   // instructions, otherwise, we always assume their intent is to authenticate.
-  console.log(req.body.digits);
+  twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
+  console.log(digits);
+  console.log(JSON.stringify(req.body.Digits));
   if (digits == 1) {
     twiml.say(
       'You have chosen to create a new account with Intuits voice recognition system. You will be ' +
