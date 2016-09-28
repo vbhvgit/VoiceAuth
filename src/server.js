@@ -242,7 +242,17 @@ app.post('/options', function(req, res) {
        this.say('Please press 1 for Quickbooks Online. Press 2 for Quickbooks Desktop');
     });
   twiml.redirect('/subOptions?digits=TIMEOUT');
+  res.send(twiml.toString());
 });
+
+app.post('/subOptions', function(req,res) {
+	var twiml = new twilio.TwimlResponse();
+	
+	twiml.say('Reached to Sub Optoins Menu. Thanks for calling');
+	res.send(twiml.toString());
+});
+
+//login methods ends here
 
 app.post('/process_authentication', function(req, res) {
   var caller       = callerCredentials(req.body);
