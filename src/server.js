@@ -127,11 +127,14 @@ app.post('/incoming_call', function(req, res) {
 app.post('/enroll_or_authenticate', function(req, res) {
   var numIn = JSON.stringify(req.body.digits);
   var twiml  = new twilio.TwimlResponse();
-  var digits = numIn.replace(/[^0-9]/g, '');
+  
   // When the caller asked to enroll by pressing `1`, provide friendly
   // instructions, otherwise, we always assume their intent is to authenticate.
   //twiml.say('You are in enroll or auth stub and we will continue the process until the code works fine');
-  
+  //var digits = numIn.replace(/[^0-9]/g, '');
+  console.log(numIn);
+  console.log(JSON.stringify(req.body.digits));
+  console.log(JSON.stringify(req.body.digits).replace(/[^0-9]/g, ''));	
   console.log(digits);
   if (digits == 1) {
     twiml.say(
